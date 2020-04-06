@@ -3,8 +3,12 @@ defmodule UrlShortener.Repo.Migrations.CreateShortenedUrls do
 
   def change do
     create table(:shortened_urls) do
-      add :code, :string
-      add :url, :string
+      add :code, :string, null: false
+      add :url, :string, null: false
+
+      timestamps()
     end
+
+    create unique_index(:shortened_urls, [:code])
   end
 end

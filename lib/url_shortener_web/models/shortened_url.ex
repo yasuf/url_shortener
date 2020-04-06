@@ -11,4 +11,8 @@ defmodule UrlShortener.ShortenedUrl do
     |> Ecto.Changeset.cast(params, [:code, :url])
     |> Ecto.Changeset.validate_required([:code, :url])
   end
+
+  def get_url(code) do
+    UrlShortener.ShortenedUrl |> UrlShortener.Repo.get_by!(code: code)
+  end
 end
