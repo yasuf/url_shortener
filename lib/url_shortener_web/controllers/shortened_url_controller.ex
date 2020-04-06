@@ -9,13 +9,10 @@ defmodule UrlShortenerWeb.ShortenedUrlController do
 
   def create(conn, %{"url" => url}) do
     code = Shortener.generate_code(6)
-    new_url = %UrlShortener.ShortenedUrl{}
-    changeset = UrlShortener.ShortenedUrl.changeset(new_url, %{code: code, url: url})
-    case UrlShortener.Repo.insert(changeset) do
+    case  UrlShortener.ShortenedUrl.create_url(code, url) do
       {:ok, url} ->
         conn
         |> put_status(:created)
     end
-    json(conn, %{ code: code, url: url })
   end
 end
