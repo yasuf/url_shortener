@@ -1,0 +1,9 @@
+<h1>Create a Shortened URL</h1>
+
+<%= form_for @changeset, Routes.shortened_url_path(@conn, :create), fn f -> %>
+  <div>
+    <%= text_input f, :name, placeholder: "URL" %>
+  </div>
+%>
+<%= submit "Submit" %>
+<% end %>

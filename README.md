@@ -1,6 +1,6 @@
 ## Things to do
 * Initialize the database
-* Setup the schema
+* ~~Setup the schema~~
   * Tentative schema
     * Table Name: ShortenedURLs
     * Columns: id, created_at, updated_at, code, url

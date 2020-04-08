@@ -11,8 +11,9 @@ defmodule UrlShortenerWeb.ShortenedUrlController do
     code = Shortener.generate_code(6)
     case  UrlShortener.ShortenedUrl.create_url(code, url) do
       {:ok, url} ->
-        conn
-        |> put_status(:created)
+        json(conn, %{code: url.code})
+      {:error, changeset} ->
+        json(conn, %{error: "There was an error creating the shortened URL"})
     end
   end
 end

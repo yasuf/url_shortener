@@ -20,7 +20,16 @@ defmodule UrlShortener.ShortenedUrl do
 
   def create_url(code, url) do
     new_url = %UrlShortener.ShortenedUrl{}
-    changeset = UrlShortener.ShortenedUrl.changeset(new_url, %{code: code, url: url})
+    normalized_url = normalize_url(url)
+    changeset = UrlShortener.ShortenedUrl.changeset(new_url, %{code: code, url: normalized_url})
     UrlShortener.Repo.insert(changeset)
+  end
+
+  def normalize_url(url) do
+    if !String.match?(url, ~r/^https?:\/\//) do
+      "http://" <> url
+    else
+      url
+    end
   end
 end
