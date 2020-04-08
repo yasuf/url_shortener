@@ -24,8 +24,6 @@ const App = () => {
       })
   }
 
-  debugger
-
   return <div className="shortener-app">
     <form onSubmit={onSubmit}>
       <label htmlFor="url">Enter a URL</label>
@@ -42,7 +40,7 @@ const App = () => {
           Succesfully shortened URL:
           </div>
           <div>
-            <a href={`localhost:4000/${code}`}>https://lynked.page/{code}</a>
+            <a target="_blank" href={`${window.location.href}/${code}`}>{window.location.href}{code}</a>
           </div>
         </div>
     }

@@ -6,3 +6,4 @@
     * Columns: id, created_at, updated_at, code, url
 * Write tests for the shortener
 * Create endpoint to create a shortened URL
+* Fix bug and use environment domain url
